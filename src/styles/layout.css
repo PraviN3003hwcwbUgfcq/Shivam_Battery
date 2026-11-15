@@ -1,0 +1,362 @@
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.header.is-scrolled {
+  border-color: var(--line);
+  box-shadow: 0 8px 24px -18px rgba(16, 24, 40, 0.35);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: var(--header-h);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  margin-right: auto;
+}
+
+.logo__mark {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  object-fit: contain;
+  transition: transform 0.4s var(--ease);
+}
+
+.logo:hover .logo__mark {
+  transform: skewX(-6deg) scale(1.05);
+}
+
+.logo__text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* Wordmark artwork: 747 x 96 px, shown at 20px tall. */
+.logo__wordmark {
+  width: auto;
+  height: 20px;
+}
+
+.logo__text span {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--muted);
+}
+
+.logo--dark .logo__text span {
+  color: #9aa4b2;
+}
+
+.header__nav {
+  display: flex;
+  gap: 2px;
+}
+
+.header__link {
+  position: relative;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-2);
+  transition: color 0.2s;
+}
+
+.header__link:hover,
+.header__link.is-active {
+  color: var(--ink);
+}
+
+.header__underline {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 3px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--blue);
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__menu {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .header__nav {
+    display: none;
+  }
+
+  .header__menu {
+    display: inline-grid;
+  }
+}
+
+@media (max-width: 767px) {
+  .header__wa {
+    display: none;
+  }
+
+  .logo__mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo__wordmark {
+    height: 18px;
+  }
+}
+
+.mobile-backdrop {
+  position: fixed;
+  inset: var(--header-h) 0 0 0;
+  z-index: -1;
+  background: rgba(15, 20, 28, 0.4);
+}
+
+.mobile-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 8px 16px 20px;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  box-shadow: var(--shadow-lg);
+}
+
+.mobile-nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  padding: 0 4px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-head);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.mobile-nav__link svg {
+  width: 18px;
+  height: 18px;
+  color: var(--muted);
+}
+
+.mobile-nav__link.is-active {
+  color: var(--blue);
+}
+
+.mobile-nav__actions {
+  margin-top: 16px;
+}
+
+.mobile-nav__actions .btn {
+  flex: 1;
+}
+
+/* Footer */
+.footer {
+  padding: 72px 0 32px;
+  background: #11161d;
+  color: #b8c0cb;
+  font-size: 15px;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.2fr 1fr;
+  gap: 40px;
+}
+
+.footer__brand p {
+  max-width: 320px;
+  margin-top: 18px;
+}
+
+.footer__title {
+  margin-bottom: 14px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.footer__links {
+  display: grid;
+  gap: 4px;
+}
+
+.footer__links a {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.footer__links a:hover {
+  color: #fff;
+}
+
+.footer__hours {
+  margin-top: 12px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+  color: #8e98a6;
+}
+
+/* Keep the last footer line clear of the floating WhatsApp button. */
+@media (min-width: 768px) {
+  .footer__bottom {
+    padding-right: 84px;
+  }
+}
+
+@media (max-width: 900px) {
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* Floating WhatsApp (desktop) */
+.wa-float {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--wa);
+  color: #fff;
+  box-shadow: 0 14px 30px -10px rgba(17, 128, 63, 0.8);
+}
+
+.wa-float svg {
+  width: 30px;
+  height: 30px;
+}
+
+.wa-float::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 50%;
+  background: var(--wa);
+  animation: wa-pulse 2.8s ease-out infinite;
+}
+
+@keyframes wa-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  70%,
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+.wa-float__tip {
+  position: absolute;
+  right: calc(100% + 12px);
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(6px);
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.25s var(--ease);
+}
+
+.wa-float:hover .wa-float__tip,
+.wa-float:focus-visible .wa-float__tip {
+  opacity: 1;
+  transform: none;
+}
+
+/* Mobile bottom bar */
+.bottom-bar {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .wa-float {
+    display: none;
+  }
+
+  .bottom-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 10px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--line);
+  }
+
+  body {
+    padding-bottom: calc(70px + env(safe-area-inset-bottom));
+  }
+}
